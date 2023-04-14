@@ -10,15 +10,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 contract PX is ERC721URIStorage, Ownable  {
 
-    struct Storage {
-        uint256 usage;
-        uint256 usagePercentage;
-        uint256 sizeInGb;
-        uint256 sizeInBytes;
-        uint256 buyTimestamp;
-        uint256 expirationTimestamp;
-        uint256 lastUpdateTimestamp;
-    }
+
     struct StoragePackage {
         string name;
         uint256 price;
@@ -27,6 +19,17 @@ contract PX is ERC721URIStorage, Ownable  {
         uint256 active;
         uint256 creationTimestamp;
         uint256 lastUpdateTimestamp;
+    }
+    struct Storage {
+        string  name;
+        uint256 usage;
+        uint256 usagePercentage;
+        uint256 sizeInGb;
+        uint256 sizeInBytes;
+        uint256 buyTimestamp;
+        uint256 expirationTimestamp;
+        uint256 lastUpdateTimestamp;
+        StoragePackage[] storagePackage;
     }
 
     using Strings for uint256;
@@ -131,16 +134,20 @@ contract PX is ERC721URIStorage, Ownable  {
             )
         );
     }
-    function mint(uint256 storageSize) public virtual payable {
+    function mint(uint256 packageId) public virtual payable {
         require(!paused, "Minting is disabled");
+        require(packageId != 0, "For the free package call freeMint method");
+        require(pxStoragePackage[packageId].active == 1, "Package is not active or does not exist");
+        uint256 storageSize = pxStoragePackage[packageId].sizeInGb;
         require(storageSize >= minimumStorageSize, "You can't buy less than minimum storage offer");
-        uint256 mintPrice = baseMintPrice.mul(storageSize);
+        uint256 mintPrice = pxStoragePackage[packageId].price;
         require(msg.value == mintPrice, "Not enough tokens sent; Price must be equal to storage fee");
 
         _tokenIds.increment();
         uint256 newItemId = _tokenIds.current();
         _safeMint(msg.sender, newItemId);
 
+        pxStorage[newItemId].name = storageSize.toString();
         pxStorage[newItemId].usage = 0;
         pxStorage[newItemId].usagePercentage = 0;
         pxStorage[newItemId].sizeInGb = storageSize;
@@ -148,6 +155,7 @@ contract PX is ERC721URIStorage, Ownable  {
         pxStorage[newItemId].buyTimestamp = block.timestamp;
         pxStorage[newItemId].lastUpdateTimestamp = block.timestamp;
         pxStorage[newItemId].expirationTimestamp = 0;
+        pxStorage[newItemId].storagePackage[0] = pxStoragePackage[packageId];
         _setTokenURI(newItemId, getTokenURI(newItemId,0,storageSize));
     }
     function setMinimumStorageSize(uint256 amount) external onlyOwner() {
