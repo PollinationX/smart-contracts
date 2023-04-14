@@ -19,20 +19,74 @@ contract PX is ERC721URIStorage, Ownable  {
         uint256 expirationTimestamp;
         uint256 lastUpdateTimestamp;
     }
+    struct StoragePackage {
+        string name;
+        uint256 price;
+        uint256 sizeInGb;
+        uint256 sizeInBytes;
+        uint256 active;
+        uint256 creationTimestamp;
+        uint256 lastUpdateTimestamp;
+    }
 
     using Strings for uint256;
     using SafeMath for uint256;
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
     mapping(uint256 => Storage) public pxStorage;
+    mapping(uint256 => StoragePackage) public pxStoragePackage;
     bool public paused = false;
     uint256 public minimumStorageSize = 1; // minimum is 1GB
+    uint256 public freePackageSize = (1 ether/10); // 100MB
+    uint256 public packageOneSize = 5; // 5GB
+    uint256 public packageTwoSize = 10; // 10GB
+    uint256 public packageThreeSize = 20; // 20GB
+    uint256 public packageFourSize = 100; // 100GB
     string public storageUnit = "GB";
     uint public constant baseMintPrice = (1 ether/100);
     uint256 private constant _gbToBytes = 1073741824;
     uint private constant _maxPercentage = 100;
 
     constructor() ERC721 ("PollinationX", "PXS"){
+        pxStoragePackage[0].name = "Free package";
+        pxStoragePackage[0].price = 0;
+        pxStoragePackage[0].sizeInGb = freePackageSize;
+        pxStoragePackage[0].sizeInBytes = freePackageSize.mul(_gbToBytes);
+        pxStoragePackage[0].active = 1;
+        pxStoragePackage[0].creationTimestamp = block.timestamp;
+        pxStoragePackage[0].lastUpdateTimestamp = block.timestamp;
+
+        pxStoragePackage[1].name = "5GB";
+        pxStoragePackage[1].price = (5 ether);
+        pxStoragePackage[1].sizeInGb = packageOneSize;
+        pxStoragePackage[1].sizeInBytes = packageOneSize.mul(_gbToBytes);
+        pxStoragePackage[1].active = 1;
+        pxStoragePackage[1].creationTimestamp = block.timestamp;
+        pxStoragePackage[1].lastUpdateTimestamp = block.timestamp;
+
+        pxStoragePackage[2].name = "10GB";
+        pxStoragePackage[2].price = (10 ether);
+        pxStoragePackage[2].sizeInGb = packageTwoSize;
+        pxStoragePackage[2].sizeInBytes = packageTwoSize.mul(_gbToBytes);
+        pxStoragePackage[2].active = 1;
+        pxStoragePackage[2].creationTimestamp = block.timestamp;
+        pxStoragePackage[2].lastUpdateTimestamp = block.timestamp;
+
+        pxStoragePackage[3].name = "20GB";
+        pxStoragePackage[3].price = (20 ether);
+        pxStoragePackage[3].sizeInGb = packageThreeSize;
+        pxStoragePackage[3].sizeInBytes = packageThreeSize.mul(_gbToBytes);
+        pxStoragePackage[3].active = 1;
+        pxStoragePackage[3].creationTimestamp = block.timestamp;
+        pxStoragePackage[3].lastUpdateTimestamp = block.timestamp;
+
+        pxStoragePackage[4].name = "100GB";
+        pxStoragePackage[4].price = (90 ether);
+        pxStoragePackage[4].sizeInGb = packageFourSize;
+        pxStoragePackage[4].sizeInBytes = packageFourSize.mul(_gbToBytes);
+        pxStoragePackage[4].active = 1;
+        pxStoragePackage[4].creationTimestamp = block.timestamp;
+        pxStoragePackage[4].lastUpdateTimestamp = block.timestamp;
     }
 
     function getProgressImage(uint256 tokenId) public view returns (string memory) {
@@ -81,7 +135,7 @@ contract PX is ERC721URIStorage, Ownable  {
         require(!paused, "Minting is disabled");
         require(storageSize >= minimumStorageSize, "You can't buy less than minimum storage offer");
         uint256 mintPrice = baseMintPrice.mul(storageSize);
-        require(msg.value == mintPrice, "Not enough ETH sent; Price must be equal to storage fee");
+        require(msg.value == mintPrice, "Not enough tokens sent; Price must be equal to storage fee");
 
         _tokenIds.increment();
         uint256 newItemId = _tokenIds.current();
