@@ -15,8 +15,23 @@ module.exports = {
       url: process.env.TESTNET_RPC,
       accounts: [process.env.PRIVATE_KEY]
     },
+    artheraTestnet: {
+      url: 'https://rpc-test.arthera.net',
+      chainId: 10243,
+      accounts: [process.env.PRIVATE_KEY]
+    },
   },
   etherscan: {
     apiKey: process.env.POLYGONSCAN_API_KEY
-  }
+  },
+  customChains: [
+    {
+      network: "artheraTestnet",
+      chainId: 10243,
+      urls: {
+        apiURL: "https://explorer-test.arthera.net/api",
+        browserURL: "https://explorer-test.arthera.net"
+      }
+    }
+  ]
 };
