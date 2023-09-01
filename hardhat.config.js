@@ -12,7 +12,7 @@ module.exports = {
   },
   networks: {
     sepolia: {
-      url: "https://rpc2.sepolia.org",
+      url: process.env.TESTNET_RPC_SEPOLIA,
       accounts: [process.env.PRIVATE_KEY]
     },
     mumbai: {
@@ -36,7 +36,8 @@ module.exports = {
     },
   },
   etherscan: {
-    apiKey: process.env.POLYGONSCAN_API_KEY,
+    apiKey: process.env.SEPOLIASCAN_API_KEY,
+    // apiKey: process.env.POLYGONSCAN_API_KEY,
     customChains: [
       {
         network: "artheraTestnet",
