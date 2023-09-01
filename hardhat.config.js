@@ -29,6 +29,11 @@ module.exports = {
       chainId: 2022,
       accounts: [process.env.PRIVATE_KEY]
     },
+    EdgeEVM: {
+      url: 'https://edgeware-evm.jelliedowl.net',
+      chainId: 2021,
+      accounts: [process.env.PRIVATE_KEY]
+    },
   },
   etherscan: {
     apiKey: process.env.POLYGONSCAN_API_KEY,
@@ -47,6 +52,14 @@ module.exports = {
         urls: {
           apiURL: "https://testnet.edgscan.live/api",
           browserURL: "https://testnet.edgscan.live"
+        }
+      },
+      {
+        network: "EdgeEVM",
+        chainId: 2021,
+        urls: {
+          apiURL: "https://edgscan.live/api",
+          browserURL: "https://edgscan.live"
         }
       }
     ]
