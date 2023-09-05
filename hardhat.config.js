@@ -38,6 +38,7 @@ module.exports = {
   etherscan: {
     apiKey: process.env.SEPOLIASCAN_API_KEY,
     // apiKey: process.env.POLYGONSCAN_API_KEY,
+    // apiKey: process.env.EDGSCAN_API_KEY,
     customChains: [
       {
         network: "artheraTestnet",
