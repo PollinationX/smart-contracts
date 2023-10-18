@@ -34,6 +34,11 @@ module.exports = {
       chainId: 2021,
       accounts: [process.env.PRIVATE_KEY]
     },
+    immu3Testnet: {
+      url: 'https://fraa-dancebox-3043-rpc.a.dancebox.tanssi.network',
+      accounts: [process.env.PRIVATE_KEY]
+    },
+
   },
   etherscan: {
     apiKey: process.env.SEPOLIASCAN_API_KEY,
@@ -62,6 +67,14 @@ module.exports = {
         urls: {
           apiURL: "https://edgscan.live/api",
           browserURL: "https://edgscan.live"
+        }
+      },
+      {
+        network: "immu3Testnet",
+        chainId: 3100,
+        urls: {
+          apiURL: "https://fraa-dancebox-3043-rpc.a.dancebox.tanssi.network",
+          browserURL: "https://polkadot.js.org/apps/?rpc=wss://fraa-dancebox-3043-rpc.a.dancebox.tanssi.network#/explorer"
         }
       }
     ]
