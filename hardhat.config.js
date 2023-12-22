@@ -38,6 +38,10 @@ module.exports = {
       url: 'https://fraa-dancebox-3043-rpc.a.dancebox.tanssi.network',
       accounts: [process.env.PRIVATE_KEY]
     },
+    oasisSapphireTestnet: {
+      url: 'https://testnet.sapphire.oasis.dev',
+      accounts: [process.env.PRIVATE_KEY]
+    },
 
   },
   etherscan: {
@@ -75,6 +79,14 @@ module.exports = {
         urls: {
           apiURL: "https://fraa-dancebox-3043-rpc.a.dancebox.tanssi.network",
           browserURL: "https://polkadot.js.org/apps/?rpc=wss://fraa-dancebox-3043-rpc.a.dancebox.tanssi.network#/explorer"
+        }
+      },
+      {
+        network: "oasisSapphireTestnet",
+        chainId: 23295,
+        urls: {
+          apiURL: "https://testnet.explorer.sapphire.oasis.dev",
+          browserURL: "https://testnet.explorer.sapphire.oasis.dev"
         }
       }
     ]
