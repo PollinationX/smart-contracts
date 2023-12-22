@@ -42,6 +42,10 @@ module.exports = {
       url: 'https://testnet.sapphire.oasis.dev',
       accounts: [process.env.PRIVATE_KEY]
     },
+    metisGoerliTestnet: {
+      url: 'https://goerli.gateway.metisdevops.link',
+      accounts: [process.env.PRIVATE_KEY]
+    },
 
   },
   etherscan: {
@@ -87,6 +91,14 @@ module.exports = {
         urls: {
           apiURL: "https://testnet.explorer.sapphire.oasis.dev",
           browserURL: "https://testnet.explorer.sapphire.oasis.dev"
+        }
+      },
+      {
+        network: "metisGoerliTestnet",
+        chainId: 599,
+        urls: {
+          apiURL: "https://goerli.explorer.metisdevops.link",
+          browserURL: "https://goerli.explorer.metisdevops.link"
         }
       }
     ]
