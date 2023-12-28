@@ -97,8 +97,8 @@ module.exports = {
         network: "metisGoerliTestnet",
         chainId: 599,
         urls: {
-          apiURL: "https://goerli.explorer.metisdevops.link",
-          browserURL: "https://goerli.explorer.metisdevops.link"
+          apiURL: "https://goerli.explorer.metisdevops.link/api",
+          browserURL: "https://goerli.explorer.metisdevops.link/api"
         }
       }
     ]
