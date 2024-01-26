@@ -46,6 +46,10 @@ module.exports = {
       url: 'https://goerli.gateway.metisdevops.link',
       accounts: [process.env.PRIVATE_KEY]
     },
+    mantleTestnet: {
+      url: 'https://rpc.testnet.mantle.xyz',
+      accounts: [process.env.PRIVATE_KEY]
+    },
 
   },
   etherscan: {
@@ -99,6 +103,14 @@ module.exports = {
         urls: {
           apiURL: "https://goerli.explorer.metisdevops.link/api",
           browserURL: "https://goerli.explorer.metisdevops.link/api"
+        }
+      },
+      {
+        network: "mantleTestnet",
+        chainId: 5001,
+        urls: {
+          apiURL: "https://explorer.testnet.mantle.xyz/api",
+          browserURL: "https://explorer.testnet.mantle.xyz/api"
         }
       }
     ]
