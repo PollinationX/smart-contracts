@@ -50,6 +50,10 @@ module.exports = {
       url: 'https://rpc.testnet.mantle.xyz',
       accounts: [process.env.PRIVATE_KEY]
     },
+    zetachainTestnet: {
+      url: 'https://rpc.ankr.com/zetachain_evm_athens_testnet',
+      accounts: [process.env.PRIVATE_KEY]
+    },
 
   },
   etherscan: {
@@ -108,6 +112,14 @@ module.exports = {
       {
         network: "mantleTestnet",
         chainId: 5001,
+        urls: {
+          apiURL: "https://explorer.testnet.mantle.xyz/api",
+          browserURL: "https://explorer.testnet.mantle.xyz/api"
+        }
+      },
+      {
+        network: "zetachainTestnet",
+        chainId: 7001,
         urls: {
           apiURL: "https://explorer.testnet.mantle.xyz/api",
           browserURL: "https://explorer.testnet.mantle.xyz/api"
