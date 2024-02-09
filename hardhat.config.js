@@ -50,8 +50,20 @@ module.exports = {
       url: 'https://rpc.testnet.mantle.xyz',
       accounts: [process.env.PRIVATE_KEY]
     },
+    mantleTestnetSepolia: {
+      url: 'https://rpc.sepolia.mantle.xyz',
+      accounts: [process.env.PRIVATE_KEY]
+    },
     zetachainTestnet: {
       url: 'https://rpc.ankr.com/zetachain_evm_athens_testnet',
+      accounts: [process.env.PRIVATE_KEY]
+    },
+    fantomTestnet: {
+      url: 'https://rpc.testnet.fantom.network',
+      accounts: [process.env.PRIVATE_KEY]
+    },
+    gnosisTestnet: {
+      url: 'https://rpc.chiadochain.net',
       accounts: [process.env.PRIVATE_KEY]
     },
 
@@ -118,11 +130,35 @@ module.exports = {
         }
       },
       {
+        network: "mantleTestnetSepolia",
+        chainId: 5003,
+        urls: {
+          apiURL: "https://explorer.sepolia.mantle.xyz/api",
+          browserURL: "https://explorer.sepolia.mantle.xyz/api"
+        }
+      },
+      {
         network: "zetachainTestnet",
         chainId: 7001,
         urls: {
           apiURL: "https://explorer.testnet.mantle.xyz/api",
           browserURL: "https://explorer.testnet.mantle.xyz/api"
+        }
+      },
+      {
+        network: "fantomTestnet",
+        chainId: 4002,
+        urls: {
+          apiURL: "https://testnet.ftmscan.com/api",
+          browserURL: "https://testnet.ftmscan.com/api"
+        }
+      },
+      {
+        network: "gnosisTestnet",
+        chainId: 10200,
+        urls: {
+          apiURL: "https://eth-goerli.blockscout.com/api",
+          browserURL: "https://eth-goerli.blockscout.com/api"
         }
       }
     ]
