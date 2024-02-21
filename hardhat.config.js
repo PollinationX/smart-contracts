@@ -46,6 +46,10 @@ module.exports = {
       url: 'https://goerli.gateway.metisdevops.link',
       accounts: [process.env.PRIVATE_KEY]
     },
+    metisSepoliaTestnet: {
+      url: 'https://sepolia.rpc.metisdevops.link',
+      accounts: [process.env.PRIVATE_KEY]
+    },
     mantleTestnet: {
       url: 'https://rpc.testnet.mantle.xyz',
       accounts: [process.env.PRIVATE_KEY]
@@ -119,6 +123,14 @@ module.exports = {
         urls: {
           apiURL: "https://goerli.explorer.metisdevops.link/api",
           browserURL: "https://goerli.explorer.metisdevops.link/api"
+        }
+      },
+      {
+        network: "metisSepoliaTestnet",
+        chainId: 59901,
+        urls: {
+          apiURL: "https://sepolia.explorer.metisdevops.link/api",
+          browserURL: "https://sepolia.explorer.metisdevops.link/api"
         }
       },
       {
