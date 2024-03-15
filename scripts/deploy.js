@@ -8,8 +8,25 @@ const hre = require("hardhat");
 
 const main = async () => {
   try {
+
+    // Library deployment
+    const libPXStorage = await hre.ethers.getContractFactory("PXStorage");
+    const libInstancePXStorage = await libPXStorage.deploy();
+    await libInstancePXStorage.deployed();
+    console.log("PXStorage Library Address--->" + libInstancePXStorage.address)
+
+    // Library deployment
+    const lib = await hre.ethers.getContractFactory("PXUtils");
+    const libInstance = await lib.deploy();
+    await libInstance.deployed();
+    console.log("PXUtils Library Address--->" + libInstance.address)
+
     const nftContractFactory = await hre.ethers.getContractFactory(
-        "PX"
+        "PX",
+        { libraries: {
+            PXUtils: libInstance.address,
+            PXStorage: libInstancePXStorage.address,
+        } }
     );
     const nftContract = await nftContractFactory.deploy();
     await nftContract.deployed();
