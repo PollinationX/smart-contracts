@@ -35,7 +35,7 @@ module.exports = {
       accounts: [process.env.PRIVATE_KEY]
     },
     immu3Testnet: {
-      url: 'https://fraa-dancebox-3043-rpc.a.dancebox.tanssi.network',
+      url: 'https://fraa-flashbox-2800-rpc.a.stagenet.tanssi.network',
       accounts: [process.env.PRIVATE_KEY]
     },
     oasisSapphireTestnet: {
@@ -47,7 +47,7 @@ module.exports = {
       accounts: [process.env.PRIVATE_KEY]
     },
     metisSepoliaTestnet: {
-      url: 'https://sepolia.rpc.metisdevops.link',
+      url: 'https://sepolia.metisdevops.link',
       accounts: [process.env.PRIVATE_KEY]
     },
     mantleTestnet: {
@@ -73,7 +73,8 @@ module.exports = {
 
   },
   etherscan: {
-    apiKey: process.env.SEPOLIASCAN_API_KEY,
+    apiKey: process.env.FANTOM_API_KEY,
+    // apiKey: process.env.SEPOLIASCAN_API_KEY,
     // apiKey: process.env.POLYGONSCAN_API_KEY,
     // apiKey: process.env.EDGSCAN_API_KEY,
     customChains: [
@@ -105,8 +106,8 @@ module.exports = {
         network: "immu3Testnet",
         chainId: 3100,
         urls: {
-          apiURL: "https://fraa-dancebox-3043-rpc.a.dancebox.tanssi.network",
-          browserURL: "https://polkadot.js.org/apps/?rpc=wss://fraa-dancebox-3043-rpc.a.dancebox.tanssi.network#/explorer"
+          apiURL: "https://fraa-flashbox-2800-rpc.a.stagenet.tanssi.network",
+          browserURL: "https://evmexplorer.tanssi-chains.network/?rpcUrl=https%3A%2F%2Ffraa-flashbox-2800-rpc.a.stagenet.tanssi.network"
         }
       },
       {
@@ -127,10 +128,10 @@ module.exports = {
       },
       {
         network: "metisSepoliaTestnet",
-        chainId: 59901,
+        chainId: 59902,
         urls: {
-          apiURL: "https://sepolia.explorer.metisdevops.link/api",
-          browserURL: "https://sepolia.explorer.metisdevops.link/api"
+          apiURL: "https://sepolia-explorer.metisdevops.link/api",
+          browserURL: "https://sepolia-explorer.metisdevops.link/api"
         }
       },
       {
@@ -161,8 +162,8 @@ module.exports = {
         network: "fantomTestnet",
         chainId: 4002,
         urls: {
-          apiURL: "https://testnet.ftmscan.com/api",
-          browserURL: "https://testnet.ftmscan.com/api"
+          apiURL: "https://api-testnet.ftmscan.com/api",
+          browserURL: "https://testnet.ftmscan.com"
         }
       },
       {
