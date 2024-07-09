@@ -113,14 +113,15 @@ contract PX is ERC165, ISubscriptionOwner, ERC721URIStorage, Ownable {
         uint256 bandwidth
     ) public {
         require(_exists(tokenId));
-        require(_isApprovedOrOwner(_msgSender(), tokenId), "!owner");
+        require(
+            _isApprovedOrOwner(_msgSender(), tokenId) || owner() == _msgSender(),
+            "!owner"
+        );
 
         uint256 newUsage = (pxStorage[tokenId].usage).add(usageInBytes);
 
         require(newUsage <= pxStorage[tokenId].sizeInBytes, "Storage full");
         require(pxStorage[tokenId].bandwidth > 0, "No bandwidth");
-        require(bandwidth > 0);
-        require(usageInBytes > 0);
 
         uint256 currentBandwidth = pxStorage[tokenId].bandwidth;
         uint256 newBandwidth = currentBandwidth > bandwidth ? pxStorage[tokenId].bandwidth.sub(bandwidth) : 0;
@@ -161,10 +162,17 @@ contract PX is ERC165, ISubscriptionOwner, ERC721URIStorage, Ownable {
     }
 
     // Function to check if a token owner can upload data
+//    function canUpload(
+//        uint256 tokenId,
+//        uint256 newUsage
+//    ) public view returns (bool) {
+//        return PXStorage.canUpload(pxStorage, tokenId, newUsage);
+//    }
+
     function canUpload(
         uint256 tokenId,
         uint256 newUsage
-    ) public view returns (bool) {
+    ) public view returns (bool canUploadStatus, bool sizeOrBandwidthExceeded, bool timestampLock) {
         return PXStorage.canUpload(pxStorage, tokenId, newUsage);
     }
 
@@ -207,12 +215,10 @@ contract PX is ERC165, ISubscriptionOwner, ERC721URIStorage, Ownable {
         uint256 tokenId,
         uint256 packageId
     ) public payable virtual {
-        require(_isApprovedOrOwner(_msgSender(), tokenId), "!owner");
+        require(_isApprovedOrOwner(_msgSender(), tokenId));
         require(
             pxStoragePackage[packageId].sizeInBytes >
-            pxStorage[tokenId].sizeInBytes,
-            "Choose bigger package"
-        );
+            pxStorage[tokenId].sizeInBytes);
 
         uint256 mintPrice = pxStoragePackage[packageId].price;
         require(msg.value == mintPrice, "Storage price");

@@ -70,6 +70,10 @@ module.exports = {
       url: 'https://rpc.chiadochain.net',
       accounts: [process.env.PRIVATE_KEY]
     },
+    sonicFantomTestnet: {
+      url: 'https://rpc.sonic.fantom.network',
+      accounts: [process.env.PRIVATE_KEY]
+    },
 
   },
   etherscan: {
@@ -172,6 +176,14 @@ module.exports = {
         urls: {
           apiURL: "https://eth-goerli.blockscout.com/api",
           browserURL: "https://eth-goerli.blockscout.com/api"
+        }
+      },
+      {
+        network: "sonicFantomTestnet",
+        chainId: 64165,
+        urls: {
+          apiURL: "https://public-sonic.fantom.network/api",
+          browserURL: "https://public-sonic.fantom.network/api"
         }
       }
     ]

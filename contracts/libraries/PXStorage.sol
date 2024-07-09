@@ -122,23 +122,51 @@ library PXStorage {
         return result;
     }
     // Function to check if new data can be uploaded
+//    function canUpload(
+//        mapping(uint256 => Storage) storage pxStorage,
+//        uint256 tokenId,
+//        uint256 newUsage
+//    ) internal view returns (bool) {
+//        // Check if the last update was more than one day ago
+//        if (block.timestamp - pxStorage[tokenId].lastUpdateTimestamp > 1 days) {
+//            return false;
+//        }
+//        // Check if the new usage exceeds the allocated size or if there is no bandwidth left
+//        if (
+//            (pxStorage[tokenId].usage.add(newUsage)) >
+//            pxStorage[tokenId].sizeInBytes || pxStorage[tokenId].bandwidth == 0
+//        ) {
+//            return false;
+//        }
+//        return true;
+//    }
+
     function canUpload(
         mapping(uint256 => Storage) storage pxStorage,
         uint256 tokenId,
         uint256 newUsage
-    ) internal view returns (bool) {
-        // Check if the last update was more than one day ago
-        if (block.timestamp - pxStorage[tokenId].lastUpdateTimestamp > 1 days) {
-            return false;
-        }
-        // Check if the new usage exceeds the allocated size or if there is no bandwidth left
+    ) internal view returns (bool canUploadStatus, bool sizeOrBandwidthExceeded, bool timestampLock) {
+        // Initialize conditions
+        sizeOrBandwidthExceeded = false;
+        timestampLock = false;
+
+        // Check if the new usage would exceed the allocated storage size or if there's no bandwidth left
         if (
-            (pxStorage[tokenId].usage.add(newUsage)) >
-            pxStorage[tokenId].sizeInBytes || pxStorage[tokenId].bandwidth == 0
+            (pxStorage[tokenId].usage.add(newUsage)) > pxStorage[tokenId].sizeInBytes ||
+            pxStorage[tokenId].bandwidth == 0
         ) {
-            return false;
+            sizeOrBandwidthExceeded = true;
         }
-        return true;
+
+        // Check if the last update was more than one day ago
+        if (block.timestamp - pxStorage[tokenId].lastUpdateTimestamp > 30 days) {
+            timestampLock = true;
+        }
+
+        // Determine if the upload can proceed
+        canUploadStatus = !sizeOrBandwidthExceeded && !timestampLock;
+
+        return (canUploadStatus, sizeOrBandwidthExceeded, timestampLock);
     }
 
     // Function to get the token URI for a storage token
