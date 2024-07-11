@@ -74,6 +74,10 @@ module.exports = {
       url: 'https://rpc.sonic.fantom.network',
       accounts: [process.env.PRIVATE_KEY]
     },
+    fantomMainnet: {
+      url: 'https://rpc.ankr.com/fantom',
+      accounts: [process.env.PRIVATE_KEY]
+    },
 
   },
   etherscan: {
@@ -184,6 +188,14 @@ module.exports = {
         urls: {
           apiURL: "https://public-sonic.fantom.network/api",
           browserURL: "https://public-sonic.fantom.network/api"
+        }
+      },
+      {
+        network: "fantomMainnet",
+        chainId: 250,
+        urls: {
+          apiURL: "https://api.ftmscan.com/api",
+          browserURL: "hhttps://ftmscan.com"
         }
       }
     ]

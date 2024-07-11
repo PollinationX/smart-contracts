@@ -162,13 +162,6 @@ contract PX is ERC165, ISubscriptionOwner, ERC721URIStorage, Ownable {
     }
 
     // Function to check if a token owner can upload data
-//    function canUpload(
-//        uint256 tokenId,
-//        uint256 newUsage
-//    ) public view returns (bool) {
-//        return PXStorage.canUpload(pxStorage, tokenId, newUsage);
-//    }
-
     function canUpload(
         uint256 tokenId,
         uint256 newUsage

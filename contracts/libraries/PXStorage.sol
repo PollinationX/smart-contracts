@@ -122,25 +122,6 @@ library PXStorage {
         return result;
     }
     // Function to check if new data can be uploaded
-//    function canUpload(
-//        mapping(uint256 => Storage) storage pxStorage,
-//        uint256 tokenId,
-//        uint256 newUsage
-//    ) internal view returns (bool) {
-//        // Check if the last update was more than one day ago
-//        if (block.timestamp - pxStorage[tokenId].lastUpdateTimestamp > 1 days) {
-//            return false;
-//        }
-//        // Check if the new usage exceeds the allocated size or if there is no bandwidth left
-//        if (
-//            (pxStorage[tokenId].usage.add(newUsage)) >
-//            pxStorage[tokenId].sizeInBytes || pxStorage[tokenId].bandwidth == 0
-//        ) {
-//            return false;
-//        }
-//        return true;
-//    }
-
     function canUpload(
         mapping(uint256 => Storage) storage pxStorage,
         uint256 tokenId,
