@@ -78,11 +78,19 @@ module.exports = {
       url: 'https://rpc.ankr.com/fantom',
       accounts: [process.env.PRIVATE_KEY]
     },
+    oasisSapphireMainnet: {
+      url: 'https://sapphire.oasis.io',
+      accounts: [process.env.PRIVATE_KEY]
+    },
+    soneiumMinatoTestnet: {
+      url: 'https://rpc.minato.soneium.org',
+      accounts: [process.env.PRIVATE_KEY]
+    },
 
   },
   etherscan: {
-    apiKey: process.env.FANTOM_API_KEY,
-    // apiKey: process.env.SEPOLIASCAN_API_KEY,
+    // apiKey: process.env.FANTOM_API_KEY,
+    apiKey: process.env.SEPOLIASCAN_API_KEY,
     // apiKey: process.env.POLYGONSCAN_API_KEY,
     // apiKey: process.env.EDGSCAN_API_KEY,
     customChains: [
@@ -195,10 +203,25 @@ module.exports = {
         chainId: 250,
         urls: {
           apiURL: "https://api.ftmscan.com/api",
-          browserURL: "hhttps://ftmscan.com"
+          browserURL: "https://ftmscan.com"
+        }
+      },
+      {
+        network: "oasisSapphireMainnet",
+        chainId: 23294,
+        urls: {
+          apiURL: "https://nexus.oasis.io",
+          browserURL: "https://explorer.sapphire.oasis.io"
+        }
+      },
+      {
+        network: "soneiumMinatoTestnet",
+        chainId: 1946,
+        urls: {
+          apiURL: "https://explorer-testnet.soneium.org",
+          browserURL: "https://explorer-testnet.soneium.org/api/v2"
         }
       }
     ]
   },
-
 };
