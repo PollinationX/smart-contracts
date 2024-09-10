@@ -106,4 +106,3 @@ Any amendments of these Terms can be made by the Company at any time at its sole
 9. Contact Information 
  
 If you have any queries as regards these Terms, please contact us info@pollinationx.io 
-![image](https://github.com/user-attachments/assets/9cd167d9-86b1-4331-9839-57a5675c1201)
