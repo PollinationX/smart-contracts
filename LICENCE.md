@@ -20,7 +20,6 @@ Policies means any of the following internal policies introduced and/or modified
 “Smart Contract” means a self-executing computer program that automatically enforces the terms of a contract between parties in a L1 network; 
 
 “Software” means any of the following software products and associated documentation files:
-![image](https://github.com/user-attachments/assets/37a44aff-4834-4283-9b0f-8d2ea88145da)
 
 | N   | Software                                | GitHub repository                               |
 |-----|-----------------------------------------|-------------------------------------------------|
