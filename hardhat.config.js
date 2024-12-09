@@ -86,7 +86,18 @@ module.exports = {
       url: 'https://rpc.minato.soneium.org',
       accounts: [process.env.PRIVATE_KEY]
     },
-
+    amoyPolygonTestnet: {
+      url: 'https://rpc-amoy.polygon.technology',
+      accounts: [process.env.PRIVATE_KEY]
+    },
+    citreaTestnet: {
+      url: 'https://rpc.testnet.citrea.xyz',
+      accounts: [process.env.PRIVATE_KEY]
+    },
+    sonicMainnet: {
+      url: 'https://rpc.soniclabs.com',
+      accounts: [process.env.PRIVATE_KEY]
+    }
   },
   etherscan: {
     // apiKey: process.env.FANTOM_API_KEY,
@@ -186,8 +197,8 @@ module.exports = {
         network: "gnosisTestnet",
         chainId: 10200,
         urls: {
-          apiURL: "https://eth-goerli.blockscout.com/api",
-          browserURL: "https://eth-goerli.blockscout.com/api"
+          apiURL: "https://gnosis-chiado.blockscout.com/api",
+          browserURL: "https://gnosis-chiado.blockscout.com/api"
         }
       },
       {
@@ -220,6 +231,30 @@ module.exports = {
         urls: {
           apiURL: "https://explorer-testnet.soneium.org",
           browserURL: "https://explorer-testnet.soneium.org/api/v2"
+        }
+      },
+      {
+        network: "amoyPolygonTestnet",
+        chainId: 80002,
+        urls: {
+          apiURL: "https://amoy.polygonscan.com",
+          browserURL: "https://api-amoy.polygonscan.com/api"
+        }
+      },
+      {
+        network: "citreaTestnet",
+        chainId: 5115,
+        urls: {
+          apiURL: "https://explorer.testnet.citrea.xyz/api/v2/",
+          browserURL: "https://explorer.testnet.citrea.xyz/api/v2/"
+        }
+      },
+      {
+        network: "sonicMainnet",
+        chainId: 146,
+        urls: {
+          apiURL: "https://explorer.soniclabs.com/api/",
+          browserURL: "https://explorer.soniclabs.com/api/"
         }
       }
     ]

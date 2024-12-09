@@ -13,7 +13,7 @@ const main = async () => {
     const lib = await hre.ethers.getContractFactory("PXUtils");
     const libInstance = await lib.deploy();
     await libInstance.deployed();
-    console.log("PXUtils Library Address--->" + libInstance.address)
+    console.log("PXUtils Address--->" + libInstance.address)
 
     // Library deployment
     const libPXStorage = await hre.ethers.getContractFactory(
@@ -24,7 +24,7 @@ const main = async () => {
     );
     const libInstancePXStorage = await libPXStorage.deploy();
     await libInstancePXStorage.deployed();
-    console.log("PXStorage Library Address--->" + libInstancePXStorage.address)
+    console.log("PXStorage Address--->" + libInstancePXStorage.address)
 
 
 
@@ -38,7 +38,7 @@ const main = async () => {
     const nftContract = await nftContractFactory.deploy();
     await nftContract.deployed();
 
-    console.log("Contract deployed to:", nftContract.address);
+    console.log("PXMain Address--->", nftContract.address);
     process.exit(0);
   } catch (error) {
     console.log(error);
